@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Duke {
+public class Shao {
     public static void printRowLine() {
         println("_________________________________________");
     }
