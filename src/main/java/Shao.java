@@ -144,18 +144,22 @@ public class Shao {
                         markItem(inputLower.split(" ")[1], items);
                     } else if (inputLower.startsWith("unmark")) {
                         unmarkItem(inputLower.split(" ")[1], items);
-                    } else {
+                    } else if (inputLower.startsWith("todo") || inputLower.startsWith("deadline")
+                            || inputLower.startsWith("event")) {
+                        String[] inputArr = input.split(" ");
+                        String description = String.join(" ", Arrays.copyOfRange(inputArr, 1, inputArr.length));
                         Task newTask = inputLower.startsWith("todo")
-                                ? new Todo(input)
+                                ? new Todo(description)
                                 : inputLower.startsWith("deadline")
-                                        ? new Deadline(trimDate(input), getBy(input))
-                                        : new Event(trimDate(input), getFromTo(input));
+                                        ? new Deadline(trimDate(description), getBy(input))
+                                        : new Event(trimDate(description), getFromTo(input));
 
                         items.add(newTask);
                         printAddedTask(newTask, items.size());
+                    } else {
+                        println(input);
                     }
                     break;
-
             }
         }
     }
