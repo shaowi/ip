@@ -15,6 +15,7 @@ public class Deadline extends Task {
 
 	@Override
 	public String getSavedFormat() {
-		return String.format("D|%d|%s|%s", isDone ? 1 : 0, description, by);
+		return String.format("D|%d|%s|%s", isDone ? 1 : 0,
+				description, formatSavedDateTime(by));
 	};
 }
